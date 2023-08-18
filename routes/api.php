@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VoucherController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('voucher', VoucherController::class);
 Route::middleware('custom.sanctum.auth')->group(function () {
-    Route::post('users', function () {
-        return response()->json(User::all());
-    });
 });
 
 Route::post('login', [LoginController::class, 'login']);
